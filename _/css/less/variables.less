@@ -1,0 +1,49 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+/* Variables =================================================== */
+
+// 1. ROOT 					==============================
+
+@bodybg	: transparent url(images/body-bg.png) repeat 0 0;
+@textcolor : rgb(147,161,161);
+
+// 2. TYPOGRAPHY 			==============================
+
+@basefont : "Helvetica Neue", Helvetica, Arial, sans-serif;
+@basefontsize : 16;
+@baselineheight : 1.5em;
+@baseheadingfont : inherit;
+@baseheadingfontweight : bold;
+@baseheadingfontcolor : inherit;
+
+@altfont : Cambria, Georgia, Times, "Times New Roman";
+@altlineheight : 1.35em;
+
+@codefont : Monaco, Courier New, monospace;
+
+// 3. COLOR - SOLARIZED		 ==============================
+
+@yellow	: rgb(181,137,0);
+@orange	: rgb(203,25,72);
+@base	: rgb(253,246,227);
+@gray	: rgb(147,161,161);
+@dark	: rgb(0,43,54);
+@light	: rgb(7,54,66);
+
+@basecolor 		: rgb(45,53,62);
+@compcolor 		: spin(@basecolor, 180);
+@bordercolor    : lighten(@basecolor, 60%);
+
+// Links
+
+@linkcolor 		    : @yellow;
+@linkcolorhover 	: darken(@linkcolor, 10);
+@linkcolorvisited   : darken(@linkcolorhover, 10);
+@linkcolorfocus 	: darken(@linkcolorvisited, 10);

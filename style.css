@@ -1,0 +1,631 @@
+/*   
+Theme Name: WP UnFramework
+Theme URI: https://github.com/c3mdigital/WP-UnFramework
+Description: A style free development theme to get you started on client project work
+Author: Chris Olbekson
+Author URI: http://c3mdigital.com
+Version: 1.0
+Tags: light, white, custom-menu, microformats, editor-style
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+/* HTML 5 Reset 
+-------------------------------------------------------------------------------*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+html {
+    font-size:                62.5%; /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
+    overflow-y:               scroll; /* Keeps page centred in all browsers regardless of content height */
+    -webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+    -ms-text-size-adjust:     100%; /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+    background: #fff;
+    }
+
+article, aside, figure, footer, header, hgroup, nav, section, .sticky {display: block;}
+
+img,
+object,
+embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+nav ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+a:hover, a:active {outline: none;}
+strong, th {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+button {width: auto; overflow: visible;}
+
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.clearfix:after { clear: both; }  
+.clearfix { zoom: 1; }
+
+/* Text meant only for screen readers */
+.assistive-text {
+    clip:     rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip:     rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    }
+
+
+/* Some additional default styling  feel free to remove or overwrite
+-------------------------------------------------------------------------------*/
+
+/* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
+body {font: 13px Helmet, Freesans, sans-serif;}
+
+
+body, select, input, textarea {color: #333;}
+
+a {color: #03f;}
+a:hover {color: #69f;}
+
+/* Custom text-selection colors */
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+
+/* A little typography 
+-----------------------------------------------------------------------------------*/
+
+/* =Global
+----------------------------------------------- */
+
+body,
+button,
+input,
+select,
+textarea {
+    color:       #404040;
+    font-family: sans-serif;
+    font-size:   1.6rem;
+    line-height: 1.5;
+    margin: 20px auto;
+    max-width: 980px;
+    padding: 0 5%;
+    background: #999;
+    }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+    }
+
+hr {
+    background-color: #ccc;
+    border:           0;
+    height:           1px;
+    margin-bottom:    1.5em;
+    }
+
+/* Text elements */
+p {
+    margin-bottom: 1.5em;
+    }
+
+ul, ol {
+    margin: 0 0 1.5em 3em;
+    }
+
+ul {
+    list-style: disc;
+    }
+
+ol {
+    list-style: decimal;
+    }
+
+ul ul, ol ol, ul ol, ol ul {
+    margin-bottom: 0;
+    margin-left:   1.5em;
+    }
+
+dt {
+    font-weight: bold;
+    }
+
+dd {
+    margin: 0 1.5em 1.5em;
+    }
+
+b, strong {
+    font-weight: bold;
+    }
+
+dfn, cite, em, i {
+    font-style: italic;
+    }
+
+blockquote {
+    margin: 0 1.5em;
+    }
+
+address {
+    margin: 0 0 1.5em;
+    }
+
+pre {
+    background:    #eee;
+    font-family:   "Courier 10 Pitch", Courier, monospace;
+    font-size:     15px;
+    font-size:     1.5rem;
+    line-height:   1.6;
+    margin-bottom: 1.6em;
+    padding:       1.6em;
+    overflow:      auto;
+    max-width:     100%;
+    }
+
+code, kbd, tt, var {
+    font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    }
+
+abbr, acronym {
+    border-bottom: 1px dotted #666;
+    cursor:        help;
+    }
+
+mark, ins {
+    background:      #fff9c0;
+    text-decoration: none;
+    }
+
+sup,
+sub {
+    font-size:      75%;
+    height:         0;
+    line-height:    0;
+    position:       relative;
+    vertical-align: baseline;
+    }
+
+sup {
+    bottom: 1ex;
+    }
+
+sub {
+    top: .5ex;
+    }
+
+small {
+    font-size: 75%;
+    }
+
+big {
+    font-size: 125%;
+    }
+
+figure {
+    margin: 0;
+    }
+
+table {
+    margin: 0 0 1.5em;
+    width:  100%;
+    }
+
+th {
+    font-weight: bold;
+    }
+
+button,
+input,
+select,
+textarea {
+    font-size:       100%; /* Corrects font size not being inherited in all browsers */
+    margin:          0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+    vertical-align:  baseline; /* Improves appearance and consistency in all browsers */
+    *vertical-align: middle; /* Improves appearance and consistency in all browsers */
+    }
+
+button,
+input {
+    line-height: normal; /* Addresses FF3/4 setting line-height using !important in the UA stylesheet */
+    *overflow:   visible; /* Corrects inner spacing displayed oddly in IE6/7 */
+    }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    border:             1px solid #ccc;
+    border-color:       #ccc #ccc #bbb #ccc;
+    border-radius:      3px;
+    background:         #fafafa; /* Old browsers */
+    background:         -moz-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* FF3.6+ */
+    background:         -webkit-gradient(linear, left top, left bottom, color-stop(60%, #fafafa), color-stop(100%, #e6e6e6)); /* Chrome,Safari4+ */
+    background:         -webkit-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+    background:         -o-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Opera 11.10+ */
+    background:         -ms-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* IE10+ */
+    background:         linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* W3C */
+    filter:             progid:DXImageTransform.Microsoft.gradient(startColorstr = '#fafafa', endColorstr = '#e6e6e6', GradientType = 0); /* IE6-9 */
+    box-shadow:         inset 0 2px 1px #fff;
+    color:              rgba(0, 0, 0, .8);
+    cursor:             pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+    -webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
+    font-size:          12px;
+    font-size:          1.4rem;
+    padding:            1.12em 1.5em .88em;
+    text-shadow:        0 1px 0 rgba(255, 255, 255, .5);
+    }
+
+button:hover,
+html input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background:   #f5f5f5; /* Old browsers */
+    background:   -moz-linear-gradient(top, #f5f5f5 60%, #dcdcdc 100%); /* FF3.6+ */
+    background:   -webkit-gradient(linear, left top, left bottom, color-stop(60%, #f5f5f5), color-stop(100%, #dcdcdc)); /* Chrome,Safari4+ */
+    background:   -webkit-linear-gradient(top, #f5f5f5 60%, #dcdcdc 100%); /* Chrome10+,Safari5.1+ */
+    background:   -o-linear-gradient(top, #f5f5f5 60%, #dcdcdc 100%); /* Opera 11.10+ */
+    background:   -ms-linear-gradient(top, #f5f5f5 60%, #dcdcdc 100%); /* IE10+ */
+    background:   linear-gradient(top, #f5f5f5 60%, #dcdcdc 100%); /* W3C */
+    filter:       progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f5f5f5', endColorstr = '#dcdcdc', GradientType = 0); /* IE6-9 */
+    border-color: #bbb #bbb #aaa #bbb;
+    }
+
+button:focus,
+html input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+html input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+    border-color: #aaa #bbb #bbb #bbb;
+    box-shadow:   inset 0 2px 3px rgba(0, 0, 0, .15);
+    box-shadow:   inset 0 2px 2px rgba(0, 0, 0, .15);
+    }
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* Addresses box sizing set to content-box in IE8/9 */
+    padding:    0; /* Addresses excess padding in IE8/9 */
+    }
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* Addresses appearance set to searchfield in S5, Chrome */
+    -moz-box-sizing:    content-box;
+    -webkit-box-sizing: content-box; /* Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof) */
+    box-sizing:         content-box;
+    }
+
+input[type="search"]::-webkit-search-decoration { /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+    -webkit-appearance: none;
+    }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+    border:  0;
+    padding: 0;
+    }
+
+input[type=text],
+textarea {
+    color:         #666;
+    border:        1px solid #ccc;
+    border-radius: 3px;
+    }
+
+input[type=text]:focus,
+textarea:focus {
+    color: #111;
+    }
+
+input[type=text] {
+    padding: 3px;
+    }
+
+textarea {
+    overflow:       auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
+    padding-left:   3px;
+    vertical-align: top; /* Improves readability and alignment in all browsers */
+    width:          98%;
+    }
+
+/* HTML
+-------------------------------------------------------------------------------*/
+
+a {}
+a:hover {}
+
+p {
+	margin: 15px 0;
+}
+
+h1, h2, h3, h4, h5 {
+	font-size: 1.5em;
+	padding: 5px 0;
+}
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* Nav Menus 
+-------------------------------------------------------------------------------*/
+.menu a {
+    text-decoration: none;
+    color:           white;
+    border-right:    1px solid;
+    padding-right:   5px;
+    padding-left:    5px;
+    }
+
+.site-navigation.main-navigation {
+    padding:       3px;
+    border-radius: 4px;
+    background: -moz-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #fafafa), color-stop(100%, #e6e6e6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* IE10+ */
+    background: linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* W3C */
+    }
+
+/* Structure {Main, Sidebar & Footer started for you
+-------------------------------------------------------------------------------*/
+
+.site-content {
+    float:  left;
+    margin: 0 -25% 0 0;
+    width:  100%;
+    }
+
+#content {
+    margin: 0 30% 0 0;
+    }
+
+#secondary { /* Sidebar 1 */
+    float:    right;
+    overflow: hidden;
+    width:    25%;
+    }
+
+#tertiary { /* Sidebar 2 */
+    clear: right;
+    }
+
+.site-footer, #footer {
+    clear: both;
+    width: 100%;
+    }
+
+.post {}
+
+.entry-content {}
+.entry-content a {}
+.entry-content a:hover {}
+
+#meta {}
+.postmetadata {}
+
+
+.navgation {}
+.next-posts {}
+.prev-posts {}
+
+#searchform {}
+#s {}
+#searchsubmt {}
+
+/*  WordPress image defaults
+-------------------------------------------------------------------------------*/
+/* =Media
+----------------------------------------------- */
+
+.site-header img,
+.entry-content img,
+.comment-content img,
+.widget img {
+    max-width: 100%; /* Fluid images for posts, comments, and widgets */
+    }
+
+.site-header img,
+.entry-content img,
+img[class*="align"],
+img[class*="wp-image-"] {
+    height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+    }
+
+.site-header img,
+.entry-content img,
+img.size-full {
+    max-width: 100%;
+    width:     auto; /* Prevent stretching of full-size images with height and width attributes in IE8 */
+    }
+
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+    border:        none;
+    margin-bottom: 0;
+    margin-top:    0;
+    padding:       0;
+    }
+
+.wp-caption {
+    border:    1px solid #ccc;
+    max-width: 100%;
+    }
+
+.wp-caption.aligncenter,
+.wp-caption.alignleft,
+.wp-caption.alignright {
+    margin-bottom: 1.5em;
+    }
+
+.wp-caption img {
+    display:   block;
+    margin:    1.2% auto 0;
+    max-width: 98%;
+    }
+
+.wp-caption-text {
+    text-align: center;
+    }
+
+.wp-caption .wp-caption-text {
+    margin: 0.8075em 0;
+    }
+
+.alignleft {
+    float:  left;
+    margin: 0 15px 30px 0;
+    }
+
+.aligncenter {
+    display: block;
+    margin:  0 auto 30px auto;
+    }
+
+.alignright {
+    float:  right;
+    margin: 0 0 30px 15px;
+    }
+
+.alignnone {
+    float:   none;
+    display: block;
+    margin:  0 0 30px 0;
+    }
+
+.size-full {
+    width:  100%;
+    height: auto;
+    margin: 0 0 30px 0;
+    }
+#content .gallery {
+    margin-bottom: 1.5em;
+    }
+
+.gallery-caption {
+    }
+
+#content .gallery a img {
+    border:    none;
+    height:    auto;
+    max-width: 90%;
+    }
+
+#content .gallery dd {
+    margin: 0;
+    }
+
+#content .gallery-columns-4 .gallery-item {
+    }
+
+#content .gallery-columns-4 .gallery-item img {
+    }
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+    max-width: 100%;
+    }
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+	a, a:visited { text-decoration: underline; }
+	a[href]:after { content: " (" attr(href) ")"; }
+	abbr[title]:after { content: " (" attr(title) ")"; }
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+	pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+	thead { display: table-header-group; }
+	tr, img { page-break-inside: avoid; }
+	img { max-width: 100% !important; }
+	@page { margin: 0.5cm; }
+	p, h2, h3 { orphans: 3; widows: 3; }
+	h2, h3 { page-break-after: avoid; }
+
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+	
+		
+}
+
+@media all and (orientation: portrait) {
+	
+}
+
+@media all and (orientation: landscape) {
+	
+}
