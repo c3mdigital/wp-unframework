@@ -16,5 +16,7 @@ The framework class includes almost everything you need to get started.  The cla
 4. Meta tags ready for population
 5. Responsive design ready including @media queries for all modern mobile devices
 6. Includes generic Less ready variable and mixins along with an icon font.
-8. All code uses WordPress best practices and up to date APIs (tested up to 3.4 RC 1)
-9. Lots of other bitchen stuff for you to work with...
+7. All functions and classes are commented and documented using PhpDoc Block standards
+8. Compatible with PHP 5.4
+9. All code uses WordPress best practices and up to date APIs (tested up to 3.4 RC 1)
+10. Lots of other bitchen stuff for you to work with...
