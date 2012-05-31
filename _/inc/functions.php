@@ -16,18 +16,14 @@
  	echo '<!-- Hello World -->';
  }
 
-add_action( 'wp_footer', 'ga_analytics' );
+add_action( 'wp_footer', 'ga_analytics', 99 );
 
-/**
- * @param string $ga_account Enter your Google Analytics account id here
- */
-function ga_analytics( $ga_account = 'UA-XXXXX-X' ) { ?>
+
+function ga_analytics() { ?>
 	<script>
-	var _gaq=[["_setAccount","<?php echo $ga_account; ?>"],["_trackPageview"]];
+	var _gaq=[["_setAccount","XX-XXXXXXXX-X"],["_trackPageview"]];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 	g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
 	s.parentNode.insertBefore(g,s)}(document,"script"));
 	</script>
 <?php }
-
-

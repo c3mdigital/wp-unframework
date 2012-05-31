@@ -23,7 +23,6 @@
 		    require_once( THEME_ADMIN . '/example-functions.php' );
 		    require_once( THEME_ADMIN . '/dashboard-cleanup.php' );
 		 }
-
 	 }
 
  	function init() {
@@ -52,6 +51,5 @@
 		add_action( 'init', 'taxonomies' );
 		add_action( 'init', 'custom_posts' );
 	}
-
 
 } //End class Wpu
