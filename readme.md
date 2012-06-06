@@ -1,6 +1,6 @@
 #  WP UnFramework - WordPress Starter Developer Theme
 
-## DEMO ##
+### DEMO ###
 
 Go to [C3MDigital.com](http://c3mdigital.com) to see WP Unframework in action.
 
