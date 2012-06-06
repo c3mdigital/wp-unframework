@@ -1,5 +1,9 @@
 #  WP UnFramework - WordPress Starter Developer Theme
 
+## DEMO ##
+
+Go to [C3MDigital.com](http://c3mdigital.com) to see WP Unframework in action.
+
 ## Summary:
 
 The WP UnFramework WordPress theme is a blank developer starter theme. It's a great empty slate upon which to build your own HTML5-based Wordpress themes.
@@ -20,3 +24,8 @@ The framework class includes almost everything you need to get started.  The cla
 8. Compatible with PHP 5.4
 9. All code uses WordPress best practices and up to date APIs (tested up to 3.4 RC 1)
 10. Lots of other bitchen stuff for you to work with...
+
+### Built With Less ###
+
+Includes a modified Bootstrap of Twitter Bootstrap with Less CSS variables, classes and mixins to match the structure of the theme <del>framework</del> Un Framework
+
