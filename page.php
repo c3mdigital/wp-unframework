@@ -1,6 +1,7 @@
 <?php get_header(); ?>
+
 <div class="main">
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
 	<article class="page" id="post-<?php the_ID(); ?>">
 
@@ -8,9 +9,9 @@
 			<?php get_template_part( 'loop', 'header' ); ?>
 		</header>
 
-		<div class="entry">
+		<div class="entry hentry">
 
-				<?php the_content(); ?>
+			<?php the_content(); ?>
 
 		</div>
 		<footer class="post-meta footer">

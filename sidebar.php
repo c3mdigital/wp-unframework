@@ -1,6 +1,12 @@
 
 <aside class="secondary widget-area" role="complementary">
 
-<?php  if ( is_home() ) : dynamic_sidebar( 'aside-home' );  else : dynamic_sidebar( 'aside-interior' ); endif; ?>
+<?php
+	if ( is_home() )
+		dynamic_sidebar( 'blog' );
+
+	else
+		dynamic_sidebar( 'sidebar' );
+	?>
 
 </aside>

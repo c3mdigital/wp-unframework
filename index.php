@@ -19,7 +19,10 @@ get_header(); ?>
 
 			<div class="entry">
 				<fig class="excerpt-thumbnail">
-					<?php if ( has_post_thumbnail() ) the_post_thumbnail(); ?>
+					<?php
+					if ( has_post_thumbnail() )
+						the_post_thumbnail( 'thumbnail' );
+					?>
 				</fig>
 		
 				<?php the_excerpt(); ?>

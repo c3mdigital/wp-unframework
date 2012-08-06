@@ -4,7 +4,7 @@ Theme URI: https://github.com/c3mdigital/WP-UnFramework
 Description: A style free development theme to get you started on client project work
 Author: Chris Olbekson
 Author URI: http://c3mdigital.com
-Version: 1.0
+Version: 1.1
 Tags: light, white, custom-menu, microformats, editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -376,7 +376,9 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     margin: 0 -25% 0 0;
     width:  70%;
     }
-
+.main-content {
+    clear: both;
+    }
 .secondary.widget-area { /* Sidebar 1 */
     float:    right;
     overflow: hidden;

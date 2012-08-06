@@ -10,7 +10,7 @@ get_header(); ?>
 
 <div class="main">
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
@@ -19,11 +19,15 @@ get_header(); ?>
 		</header>
 
 		<div class="entry-content">
+
 			<?php the_content(); ?>
-				
+
 			<footer class="single">
-					<?php get_template_part( 'loop', 'footer' ); ?>
+
+				<?php get_template_part( 'loop', 'footer' ); ?>
+
 			</footer>
+
 		</div>
 			
 	</article>
