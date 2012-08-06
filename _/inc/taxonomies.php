@@ -20,15 +20,15 @@ class Wpu_Taxonomies extends Wpu {
 		$this->taxonomies();
 	}
  
-    /**
+	/**
 	 * Registers taxonomies defined in parent class
 	 *
 	 * @since 0.1.0
 	 */
     function taxonomies() {
 
-	    foreach ( Wpu::$taxonomies as $key => $value ) :
- 	
+		foreach ( Wpu::$taxonomies as $key => $value ) :
+
 		$labels = array(
 			'name' => $value['name'],
     		'singular_name' => $value['singular'],
@@ -46,11 +46,11 @@ class Wpu_Taxonomies extends Wpu {
 			'public' => $value['public'],
 			'show_in_nav_menus'	=> $value['public'],
 			'show_tagcloud' => isset( $value['show_tag_cloud'] ) ? $value['show_tag_cloud'] : false,
-    		'hierarchical' => isset( $value['hierarchical'] ) ? $value['hierarchical'] : true,
-    		'show_ui' => $value['public'],
-    		'query_var' => isset( $value['query_var'] ) ? $value['query_var'] : $value['public'],
-    		'capabilities' => isset( $value['capabilities'] ) ? $value['capabilities'] : array( 'post' ),
-    		'rewrite' => isset( $value['rewrite'] ) ? $value['rewrite'] : true,
+			'hierarchical' => isset( $value['hierarchical'] ) ? $value['hierarchical'] : true,
+			'show_ui' => $value['public'],
+			'query_var' => isset( $value['query_var'] ) ? $value['query_var'] : $value['public'],
+			'capabilities' => isset( $value['capabilities'] ) ? $value['capabilities'] : array( 'post' ),
+			'rewrite' => isset( $value['rewrite'] ) ? $value['rewrite'] : true,
 			);
 			
 		register_taxonomy( $key, array( $value['object'] ), $args );

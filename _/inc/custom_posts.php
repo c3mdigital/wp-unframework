@@ -12,9 +12,9 @@ class Wpu_Custom_Post_Types extends Wpu {
 
 	public static $post_types;
 
-    function __construct() {
-	    $this->post_types();
-    }
+	function __construct() {
+		$this->post_types();
+	}
 
 	/**
 	 * Registers custom post types
@@ -24,7 +24,7 @@ class Wpu_Custom_Post_Types extends Wpu {
 
 		foreach ( Wpu::$post_types as $key => $value ) :
 			$labels = array(
- 			    'name'          => $value['singular'],
+				'name'          => $value['singular'],
 				'singular_name' => $value['singular'],
 				'add_new'       => 'Add new '.$value['singular'],
 				'all_items'     => 'All '.$value['plural'],
@@ -41,24 +41,24 @@ class Wpu_Custom_Post_Types extends Wpu {
 			
 			$args = array(
 				'labels'        => $labels,
- 			    'public'        => $value['public'],
- 			    'publicly_queryable' => $value['public'],
-    		    'show_ui'       => $value['public'],
-    		    'show_in_menu'  => $value['public'],
-    		    'query_var'     => $value['public'],
-    		    'rewrite'       => $value['rewrite'],
-    		    'capability_type' => 'post',
-    		    'has_archive'   => isset( $value['archive'] ) ? $value['archive'] : 'true',
-    		    'hierarchical'  => isset( $value['hierarchical'] ) ? $value['hierarchical'] : false,
-    		    'menu_position' => isset( $value['menu_position'] ) ? $value['menu_position'] : 15,
-    		    'can_export'    => isset( $value[ 'can_export' ] ) ? $value['can_export'] : true,
-    		    'show_in_nav_menus' => isset( $value['show_in_nav_menus'] ) ? $value['show_in_nav_menus'] : true,
-    		    'taxonomies'    => $value[ 'taxonomies' ],
-    		    'supports'      => $value[ 'supports' ]
+				'public'        => $value['public'],
+				'publicly_queryable' => $value['public'],
+				'show_ui'       => $value['public'],
+				'show_in_menu'  => $value['public'],
+				'query_var'     => $value['public'],
+				'rewrite'       => $value['rewrite'],
+				'capability_type' => 'post',
+				'has_archive'   => isset( $value['archive'] ) ? $value['archive'] : 'true',
+				'hierarchical'  => isset( $value['hierarchical'] ) ? $value['hierarchical'] : false,
+				'menu_position' => isset( $value['menu_position'] ) ? $value['menu_position'] : 15,
+				'can_export'    => isset( $value[ 'can_export' ] ) ? $value['can_export'] : true,
+				'show_in_nav_menus' => isset( $value['show_in_nav_menus'] ) ? $value['show_in_nav_menus'] : true,
+				'taxonomies'    => $value[ 'taxonomies' ],
+				'supports'      => $value[ 'supports' ]
 			);
 			
 		register_post_type( $key, $args );
-    		
+
 		endforeach;
     }
 }
