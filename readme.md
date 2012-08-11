@@ -78,6 +78,7 @@ protected static $scripts variable in class-wpu.php like so:
 				'src'        => 'fancybox/jquery.fancybox-1.3.4.js',
 				'depends'    => array( 'jquery' ),
 				'footer'     => true,
+			),
 		);
 
 **Note: Fancybox also requires the fancybox.css script that will need the wp_enqueue_style call  to be manually added to _/inc/scripts.php**
