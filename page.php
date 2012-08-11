@@ -1,28 +1,24 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Single Page Template
+ *
+ * @package WP Unframework
+ * @subpackage page.php
+ *
+ */
+get_header(); ?>
 
 <div class="main">
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+		get_template_part( 'loop', 'header' );
+
+		Wpu_Functions::post_content();
 			
-	<article class="page" id="post-<?php the_ID(); ?>">
+		get_template_part( 'loop', 'footer' );
 
-		<header class="post-meta header">
-			<?php get_template_part( 'loop', 'header' ); ?>
-		</header>
+		endwhile; endif; ?>
 
-		<div class="entry hentry">
-
-			<?php the_content(); ?>
-
-		</div>
-		<footer class="post-meta footer">
-			
-			<?php get_template_part( 'loop', 'footer' ); ?>
-			
-		</footer>
-
-	</article>
-		
-	<?php endwhile; endif; ?>
 </div><!-- .main -->
 
 <?php get_sidebar(); ?>

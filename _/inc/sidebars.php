@@ -17,17 +17,13 @@ class Wpu_Sidebars extends Wpu {
 	 */
 	public static $sidebars;
 
-	function __construct() {
-		$this->sidebars();
-	}
-
 	/**
 	 * Register sidebars defined in parent class
 	 *
 	 * @since 1.0
 	 */
 	function sidebars() {
-		foreach ( Wpu::$sidebars as $key => $value ) :
+		foreach ( parent::$sidebars as $key => $value ) :
 	
 			register_sidebar( array(
                 'name'            => $key,
@@ -35,7 +31,7 @@ class Wpu_Sidebars extends Wpu {
                 'description'     => $value['desc'],
                 'before_widget'   => '<section id="%1$s" class="module %2$s">',
                 'after_widget'    => '</section>',
-                'before_title'    => '<h3>',
+                'before_title'    => '<h3 class="widget-title">',
                 'after_title'     => '</h3>'
             ));
         

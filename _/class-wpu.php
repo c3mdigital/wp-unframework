@@ -10,51 +10,75 @@
 class Wpu {
 
 	/**
-	 * @var array Custom post types
+	 * Custom post types
+	 *
+	 * @var array
+	 * @access protected
 	 * @since 1.0
 	 */
 	protected static $post_types;
 
 	/**
-	 * @var array Registered sidebars
+	 * Registered sidebars
+	 *
+	 * @var array
+	 * @access protected
 	 * @since 1.0
 	 */
 	protected static $sidebars;
 
 	/**
-	 * @var array Custom taxonomies
-	 * @status protected
+	 * Custom taxonomies
+	 * @var array
+	 * @access protected
 	 * @since 1.0
 	 */
 	protected static $taxonomies;
 
 	/**
-	 * @var array Custom Widgets
+	 * Custom Widgets
+	 *
+	 * @var array
+	 * @access public
 	 * @since 1.0
 	 */
 	public static $widgets;
 
 	/**
-	 * @var array Javascript files to enqueue
+	 * Javascript files to enqueue
+	 *
+	 * @var array
+	 * @access protected
 	 * @since 1.0
 	 */
 	protected static $scripts;
 
 	/**
-	 * @var array Registered nav menus
-	 * @status private
+	 * Registered nav menus
+	 *
+	 * @var array
+	 * @access private
 	 * @since 1.0
 	 */
 	private $nav_menus;
+
+	/**
+	 * Users chosen date format
+	 *
+	 * @var string
+	 * @status public
+	 * @since 1.0
+	 */
+	public static $date_format;
 
 
 	function __construct() {
 		$this->_set_vars();
 		$this->actions();
+		$this->filters();
 
-		if( ! is_admin() )
+		if ( ! is_admin() )
 			new Wpu_Scripts();
-
 	 }
 
 	/**
@@ -68,7 +92,7 @@ class Wpu {
 				'singular'  => 'Custom',
 				'plural'    => 'Customs',
 				'public'    => true,
-				'rewrite'   => true,
+				'rewrite'   => array( 'slug' => 'custom-pts', 'with_front' => false ),
 				'supports'  => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
 				'taxonomies'=> array( 'example' ),
 			),
@@ -81,6 +105,10 @@ class Wpu {
 			'blog' => array(
 				'name'  => 'Blog Sidebar',
 				'desc'  => 'The blog page sidebar'
+			),
+			'single' => array(
+				'name'  => 'Single Sidebar',
+				'desc'  => 'Sidebar for single posts and pages'
 			),
 		);
 		self::$taxonomies = array(
@@ -99,38 +127,63 @@ class Wpu {
 				'depends'    => array ( 'jquery' ),
 				'footer'     => true,
 			),
-
 		);
 		$this->nav_menus = array(
 			'primary'   => 'Primary Navigation Menu',
 			'footer'    => 'Footer Navigation Menu',
 		);
+
+		self::$date_format = get_option( 'date_format' );
 	}
 
+	/**
+	 * Theme setup function attached to the after theme setup hook
+	 *
+	 * @var string $content_width
+	 * @var string $image_set Default link used in insert image
+	 */
 	function theme_setup() {
-
+		global $content_width;
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'post-formats', array( 'aside', 'link' ) );
-		add_theme_support( 'custom-header' );
 
 		add_image_size( 'mini-thumb', 110, 110, true );
-		add_editor_style( THEME_CSS_URI . 'editor-style.css' );
+		add_editor_style( '_/css/editor-style.css' );
 
 		register_nav_menus( $this->nav_menus );
 
 		$image_set = get_option( 'image_default_link_type' );
-		if( 'none' !== $image_set )
+		if ( 'none' !== $image_set )
 			update_option( 'image_default_link_type', 'none' );
 
+		if ( ! isset( $content_width ) )
+			$content_width = 600;
+
 	}
-	
+
+	/**
+	 * Attaches class methods to WordPress action hooks
+	 *
+	 * Uncomment taxonomies and post_types init action hooks to add
+	 *      custom post types and taxonomies defined in the @static $post_types and
+	 *      @static $taxonomies variables.  ( Don't forget to un comment the includes in functions.php
+	 */
 	function actions() {
 		add_action( 'after_setup_theme', array ( $this, 'theme_setup' ) );
-		add_action( 'widgets_init', array( new Wpu_Sidebars(), 'sidebars' ) );
+		add_action( 'widgets_init', array( 'Wpu_Sidebars', 'sidebars' ) );
 		add_action( 'widgets_init', 'wpu_register_widgets' );
-		add_action( 'init', array( new Wpu_Taxonomies(), 'taxonomies' ) );
-		add_action( 'init', array( new Wpu_Custom_Post_Types(), 'post_types' ) );
+	//	add_action( 'init', array( 'Wpu_Taxonomies', 'taxonomies' ) );
+	//	add_action( 'init', array( 'Wpu_Custom_Post_Types', 'post_types' ) );
+	}
+
+	/**
+	 * Filters WordPress functions with class methods found in @class Wpu_Functions
+	 * @see Wpu_Functions
+	 */
+	function filters() {
+		add_filter( 'excerpt_length', array ( 'Wpu_Functions', 'excerpt_length' ) );
+		add_filter( 'excerpt_more', array ( 'Wpu_Functions', 'read_more' ) );
+		add_filter( 'get_the_excerpt', array ( 'Wpu_Functions', 'custom_more' ) );
 	}
 
 } //End class Wpu

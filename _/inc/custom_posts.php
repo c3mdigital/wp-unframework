@@ -10,19 +10,22 @@
 
 class Wpu_Custom_Post_Types extends Wpu {
 
-	public static $post_types;
-
-	function __construct() {
-		$this->post_types();
-	}
+	/**
+	 * Custom post types
+	 *
+	 * @var array
+	 * @access protected
+	 * @since 1.0
+	 */
+	protected static $post_types;
 
 	/**
-	 * Registers custom post types
+	 * Registers custom post types defined in parent class
 	 * @param array Wpu::post_types
 	 */
 	function post_types() {
 
-		foreach ( Wpu::$post_types as $key => $value ) :
+		foreach ( parent::$post_types as $key => $value ) :
 			$labels = array(
 				'name'          => $value['singular'],
 				'singular_name' => $value['singular'],
@@ -48,7 +51,7 @@ class Wpu_Custom_Post_Types extends Wpu {
 				'query_var'     => $value['public'],
 				'rewrite'       => $value['rewrite'],
 				'capability_type' => 'post',
-				'has_archive'   => isset( $value['archive'] ) ? $value['archive'] : 'true',
+				'has_archive'   => isset( $value['archive'] ) ? $value['archive'] : true,
 				'hierarchical'  => isset( $value['hierarchical'] ) ? $value['hierarchical'] : false,
 				'menu_position' => isset( $value['menu_position'] ) ? $value['menu_position'] : 15,
 				'can_export'    => isset( $value[ 'can_export' ] ) ? $value['can_export'] : true,
@@ -60,5 +63,5 @@ class Wpu_Custom_Post_Types extends Wpu {
 		register_post_type( $key, $args );
 
 		endforeach;
-    }
+	}
 }

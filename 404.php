@@ -1,7 +1,15 @@
-<?php get_header(); ?>
+<?php
+/**
+ * 404 Error Page Template
+ *
+ * @package WP Unframework
+ * @subpackage 404.php
+ */
 
-	<?php _e('<h2>Error 404 - Page Not Found</h2>','html5reset'); ?>
+get_header();
 
-<?php get_sidebar(); ?>
+	 _e( '<h2>Error 404 - Page Not Found</h2>','wpu' );
+	 _e( '<p>Sorry about this but the page you were looking for was not found</p>', 'wpu' );
 
-<?php get_footer(); ?>
+get_sidebar();
+get_footer();

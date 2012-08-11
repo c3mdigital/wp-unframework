@@ -41,3 +41,92 @@ ol.commentlist li.parent { border-left: 5px solid #111; }
 ol.commentlist li.thread-alt { }
 ol.commentlist li.thread-even { }
 ol.commentlist li.thread-odd { }
+
+#commentform textarea, #commentform input[type="text"] {
+    background:         white;
+    border:             1px solid #CCC;
+    padding:            4px 6px;
+    margin-right:       3px;
+    -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow:    inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow:         inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius:      2px;
+    }
+
+#respond:first-child {
+    border-top:  none !important;
+    padding-top: 0 !important;
+    }
+#commentform p {
+    font-size:     10px;
+    margin: 0;
+    }
+#respond form {
+    margin:     0;
+    padding:    0;
+    border:     none;
+    background: #EBEBEB;
+    width:      auto !important;
+    text-align: left;
+    }
+#commentform {
+    color:         #222;
+    margin-bottom: 15px;
+    background:    transparent !important;
+    }
+#commentform textarea {
+    width: 600px;
+    }
+#respond label, #respond form label {
+    background:     none;
+    color:          inherit;
+    text-transform: none;
+    padding:        0;
+    display:        block;
+    }
+#respond form * {
+    font-size: 12px;
+    }
+#respond input {
+    margin: 10px auto;
+    }
+#respond .form-submit input, #respond .form-submit input#comment-submit,
+#respond .comment-form-fields input[type="submit"],
+#respond p.form-submit input[type="submit"],
+#respond input[type="submit"],
+#commentform #submit {
+    line-height:           18px !important;
+    border:                1px solid #CCC;
+    background:            white;
+    padding:               3px 10px !important;
+    font-size:             14px !important;
+    -moz-border-radius:    15px !important;
+    -webkit-border-radius: 15px !important;
+    border-radius:         15px !important;
+    cursor:                pointer;
+    color:                 #555 !important;
+    text-shadow:           0 1px 0 rgba(255, 255, 255, 0.45) !important;
+    min-width:             0;
+    width:                 auto;
+    height:                auto;
+    font-family:           Arial, Helvetica, Tahoma, Verdana, sans-serif;
+    font-weight:           normal !important;
+    -moz-box-shadow:       none;
+    -webkit-box-shadow:    none;
+    box-shadow:            none;
+    }
+
+#respond .form-submit input:hover, #respond .comment-form-fields input[type="submit"]:hover, #respond p.form-submit input[type="submit"]:hover, #respond input[type="submit"]:hover, #commentform #submit:hover #respond .form-submit input:focus, #respond .comment-form-fields input[type="submit"]:focus, #respond p.form-submit input[type="submit"]:focus, #respond input[type="submit"]:focus, #commentform #submit:focus {
+    background:         url(images/button-back-over.gif) top left repeat-x;
+    border-color:       #999 !important;
+    -moz-box-shadow:    0 1px 10px #999;
+    -webkit-box-shadow: 0 1px 10px #999;
+    box-shadow:         0 1px 10px #999;
+    }
+
+#commentform, #commentform input, #commentform textarea {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    }
+#commentform .required {
+    display: none;
+    }

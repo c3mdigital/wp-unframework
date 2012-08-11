@@ -12,13 +12,15 @@
 		function __construct() {
 			$widget_ops = array (
 				'classname'   => 'wpu_category_widget',
-				'description' => __( 'Better Category Widget' ),
+				'description' => __( 'Better Category Widget', 'wpu' ),
 			);
 			$control_ops = array ();
-			parent::__construct( 'wpu_category_widget', __( 'Better Category Widget' ), $widget_ops, $control_ops );
+			parent::__construct( 'wpu_category_widget', __( 'Better Category Widget', 'wpu' ), $widget_ops, $control_ops );
 		}
 
 		/**
+		 * Displays the widget
+		 *
 		 * @param array $args
 		 * @param array $instance
 		 */
@@ -47,6 +49,13 @@
 			echo $after_widget;
 		}
 
+		/**
+		 * Updates the widget options in the db
+		 *
+		 * @param array $new_instance
+		 * @param array $old_instance
+		 * @return array
+		 */
 		function update( $new_instance, $old_instance ) {
 			$instance = $old_instance;
 			$instance['title'] = strip_tags( $new_instance['title'] );
@@ -54,6 +63,12 @@
 			return $instance;
 		}
 
+		/**
+		 * Displays the widget options
+		 *
+		 * @param array $instance
+		 * @return string|void
+		 */
 		function form( $instance ) {
 			$instance = wp_parse_args( (array)$instance, array (
 					'title'    => '',
@@ -63,9 +78,9 @@
 			$title = strip_tags( $instance['title'] );
 			$exclude = strip_tags( $instance['exclude'] );
 			?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'wpu' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>"/></p>
-		<p><label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><?php _e( 'Categories To Exclude' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><?php _e( 'Categories To Exclude', 'wpu' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" type="text" value="<?php echo esc_attr( $exclude ); ?>"/></p>
 		<?php
 		}

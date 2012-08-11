@@ -18,6 +18,8 @@ class Wpu_Scripts extends Wpu {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'comment_form_before', array( $this, 'comment_reply' ) );
+
 	}
 
 	function scripts() {
@@ -29,7 +31,7 @@ class Wpu_Scripts extends Wpu {
                 $src = !empty( $value[ 'remote' ] ) ? $value['src'] : THEME_JS_URI . $value['src'];
 		
         	    if ( ! $value['depends'] == null ) :
-        	            wp_register_script( $key, $src, $value[ 'depends' ], false, !empty( $value['footer'] ) );
+        	        wp_register_script( $key, $src, $value[ 'depends' ], false, !empty( $value['footer'] ) );
         	
         	    else :
         	        wp_register_script( $key, $src, false, !empty( $value['footer'] ) );
@@ -48,10 +50,12 @@ class Wpu_Scripts extends Wpu {
 
 		wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
-      	    wp_enqueue_script( 'comment-reply' );
-
 		if ( is_singular() && comments_open() )
-			wp_enqueue_style( 'comments-css', THEME_CSS_URI . 'comments.css', array( 'style') );
+			wp_enqueue_style( 'comments-css', THEME_CSS_URI . 'comments.css', array( 'style' ) );
+	}
+
+	function comment_reply() {
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+			wp_enqueue_script( 'comment-reply' );
 	}
 }

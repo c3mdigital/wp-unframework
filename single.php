@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Post template file
+ * Single Post Template
  *
  * @package WP Unframework
  * @subpackage single.php
@@ -10,31 +10,21 @@ get_header(); ?>
 
 <div class="main">
 
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<?php
 
-	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+	if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-		<header class="postmeta">
-			<?php get_template_part( 'loop', 'header' ); ?>
-		</header>
+		get_template_part( 'loop', 'header' );
 
-		<div class="entry-content">
+		Wpu_Functions::post_content();
 
-			<?php the_content(); ?>
+		get_template_part( 'loop', 'postnav' );
 
-			<footer class="single">
+		get_template_part( 'loop', 'footer' );
 
-				<?php get_template_part( 'loop', 'footer' ); ?>
 
-			</footer>
 
-		</div>
-			
-	</article>
-
-	<?php comments_template(); ?>
-
-	<?php endwhile; endif; ?>
+	endwhile; endif; ?>
 
 </div><!-- .main -->
 

@@ -1,44 +1,40 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Search results template
+ *
+ * @package WP Unframework
+ * @subpackage search.php
+ *
+ */
+
+get_header(); ?>
 
 <div class="main">
-	<?php if ( have_posts() ) : ?>
+	<?php if ( have_posts() ) :
 
-		<h2>Search Results for: <?php the_search_query(); ?></h2>
+			Wpu_Functions::archive_title();
 
-		<?php get_template_part( 'loop', 'postnav' ); ?>
+			get_template_part( 'loop', 'postnav' );
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		rewind_posts();
 
-			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			
-				<header class="postmeta search">
-				
-					<?php get_template_part( 'loop', 'header' ); ?>
-				
-				</header>
-				
-					<div class="entry">
+		while ( have_posts() ) : the_post();
 
-						<?php the_excerpt(); ?>
+			get_template_part( 'loop', 'header' );
 
-					</div>
+				Wpu_Functions::post_content();
 
-			</article>
+			get_template_part( 'loop', 'footer' );
 
-		<?php endwhile; ?>
-		
-			<nav class="navigation">
+		endwhile;
 
-				<?php get_template_part( 'loop', 'postnav' ); ?>
-				
-			</nav>
+			get_template_part( 'loop', 'postnav' );
 
+		 else :
 
-	<?php else : ?>
+			printf( __( '<h2>Nothing found for %1$s </h2>', 'wpu' ), get_search_query() );
 
-		<h2>No posts found.</h2>
-
-	<?php endif; ?>
+		endif; ?>
 </div><!-- .main -->
 
 <?php get_sidebar(); ?>

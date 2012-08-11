@@ -1,15 +1,16 @@
 /*   
 Theme Name: WP UnFramework
 Theme URI: https://github.com/c3mdigital/WP-UnFramework
-Description: A style free development theme to get you started on client project work
+Description: Object orientated WordPress Starter theme
 Author: Chris Olbekson
 Author URI: http://c3mdigital.com
-Version: 1.1
+Version: 1.2.1
 Tags: light, white, custom-menu, microformats, editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+See license.txt for license information regarding all included 3rd party scripts
+See readme.txt for theme documentation
 */
-
 
 /* HTML 5 Reset 
 -------------------------------------------------------------------------------*/
@@ -123,9 +124,6 @@ body {font: 13px Helmet, Freesans, sans-serif;}
 
 body, select, input, textarea {color: #333;}
 
-a {color: #03f;}
-a:hover {color: #69f;}
-
 /* Custom text-selection colors */
 ::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
 ::selection {background: #fcd700; color: #fff; text-shadow: none;} 
@@ -146,12 +144,17 @@ input,
 select,
 textarea {
     color:       #404040;
-    font-family: sans-serif;
-    font-size:   1.6rem;
+    font-size:   1.4rem;
     line-height: 1.5;
-    margin: 20px auto;
     max-width: 980px;
     padding: 0 5%;
+    }
+
+body {
+    padding: 2% 1%;
+    margin: 30px auto;
+    box-shadow: 0 0 2px #888;
+    border: 1px solid #fff;
     }
 
 /* Headings */
@@ -327,8 +330,14 @@ textarea {
 /* HTML
 -------------------------------------------------------------------------------*/
 
-a {}
-a:hover {}
+a {
+    outline: none;
+    color:   #21759b;
+    }
+
+a:hover {
+    color: #0f3647;
+    }
 
 p {
 	margin: 15px 0;
@@ -336,53 +345,188 @@ p {
 
 h1, h2, h3, h4, h5 {
 	font-size: 1.5em;
-	padding: 5px 0;
+	padding: 0;
 }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
 
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
-nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+nav ul, nav ol, aside ol, aside ul, .list { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 
 
 /* Nav Menus 
 -------------------------------------------------------------------------------*/
 .menu a {
     text-decoration: none;
-    border-right:    1px solid;
     padding-right:   5px;
     padding-left:    5px;
     float: left;
-    color: #333;
     text-shadow: 0 1px 0 #fff;
     }
 
-.menu-nav-container {
-    padding:       3px;
-    border-radius: 4px;
-    background: -moz-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #fafafa), color-stop(100%, #e6e6e6)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* IE10+ */
-    background: linear-gradient(top, #fafafa 60%, #e6e6e6 100%); /* W3C */
-    overflow: hidden;
+.menu-nav-container {  }
+
+/* Navigation Menu */
+.main-navigation {
+    display:       inline-block;
+    width:         100%;
     }
 
+.main-navigation ul {
+    margin:      0;
+    text-indent: 0;
+    }
+
+.main-navigation li ul li {
+    padding-left: 0;
+    }
+
+.main-navigation li a,
+.main-navigation li {
+    display:         inline-block;
+    text-decoration: none;
+    }
+
+.main-navigation li a {
+    text-transform: uppercase;
+    }
+
+.main-navigation li a:hover {
+    color: #000;
+    }
+
+.main-navigation li {
+    margin-right: 40px;
+    margin-right: 2.857142857rem;
+    position:     relative;
+    }
+
+.main-navigation li a {
+    border-bottom: 0;
+    }
+
+.main-navigation li ul {
+    display:  none;
+    position: absolute;
+    top:      100%;
+    padding:  0;
+    margin:   0;
+    z-index:  1;
+    }
+
+.main-navigation li ul ul {
+    top:  0;
+    left: 100%;
+    }
+
+.main-navigation ul li:hover > ul {
+    display:     block;
+    border-left: 0;
+    }
+
+.main-navigation li ul li,
+.main-navigation li ul li a {
+    text-align: center;
+    }
+
+.main-navigation li ul li a {
+    background:    #efefef;
+    border-bottom: 1px solid #ededed;
+    display:       block;
+    padding:       5px 10px;
+    margin:        0;
+    width:         140px;
+    }
+
+.main-navigation li ul li a:hover {
+    background: #e3e3e3;
+    color:      #444;
+    }
+
+.main-navigation .current-menu-item > a,
+.main-navigation .current-menu-ancestor > a,
+.main-navigation .current_page_item > a,
+.main-navigation .current_page_ancestor > a {
+    color:       #636363;
+    font-weight: bold;
+    }
+
+nav[role="navigation"].main-small-navigation {
+    margin-top: 24px;
+    margin-top: 1.714285714rem;
+    text-align: center;
+    }
+
+nav[role="navigation"].main-small-navigation li {
+    margin-top:  24px;
+    margin-top:  1.714285714rem;
+    font-size:   12px;
+    font-size:   0.857142857rem;
+    line-height: 2;
+    float:       none;
+    }
+
+nav[role="navigation"].main-small-navigation a {
+    color: #5e5e5e;
+    }
+
+nav[role="navigation"].main-small-navigation a:hover {
+    color: #21759b;
+    }
+
+.menu-toggle {
+    display: inline-block;
+    padding: 4px 10px;
+    padding: 0.285714286rem 0.714285714rem;
+    }
+
+.main-small-navigation .menu {
+    display: none;
+    }
+
+.post-navigation {
+    margin:    20px 0;
+    display:   block;
+    overflow:  hidden;
+    font-size: 1.25rem;
+    }
+
+/* Site Header
+------------------------------------------------------------------------------*/
+
+.site-header {
+    margin: 20px 0;
+    }
+.site-title,
+.site-title a {
+    text-decoration: none;
+    font-size: 2.5rem;
+
+    }
+.site-description {
+
+    }
+.site-header hgroup {
+    margin-bottom: 20px;
+    }
 /* Structure {Main, Sidebar & Footer started for you
 -------------------------------------------------------------------------------*/
 
 .main {
     float:  left;
-    margin: 0 -25% 0 0;
+    margin: 20px -25% 0 0;
     width:  70%;
-    }
-.main-content {
     clear: both;
     }
+
 .secondary.widget-area { /* Sidebar 1 */
     float:    right;
     overflow: hidden;
     width:    25%;
+    margin-top: 20px;
     }
 
 #tertiary { /* Sidebar 2 */
@@ -393,7 +537,16 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     clear: both;
     width: 100%;
     }
-
+.entry-title a {
+    text-decoration: none;
+    font-size: 2.5rem;
+    }
+.page-title {
+    font-size: 3rem;
+    }
+.post-title {
+    font-size: 3rem;
+    }
 .post {}
 
 .entry-content {}
@@ -401,13 +554,18 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 .entry-content a:hover {}
 
 #meta {}
-.postmetadata {}
+.post-meta {
+    font-size: 1.25rem;
+    color: #777;
+    margin-bottom: 20px;
+    }
 
-
-.navgation {}
-.next-posts {}
-.prev-posts {}
-
+footer { clear: both; }
+.entry-content nav { overflow: hidden; clear: both; }
+.navgation { clear:both; overflow: hidden; }
+.next-posts { float: right;}
+.prev-posts { float: left; }
+.attachment img { margin: 10px auto; }
 #searchform {
     width: 25%;
     }
@@ -438,6 +596,7 @@ img[class*="wp-image-"] {
 img.size-full {
     max-width: 100%;
     width:     auto; /* Prevent stretching of full-size images with height and width attributes in IE8 */
+    border-radius: 3px;
     }
 
 .entry-content img.wp-smiley,
@@ -451,6 +610,7 @@ img.size-full {
 .wp-caption {
     border:    1px solid #ccc;
     max-width: 100%;
+    text-align: left;
     }
 
 .wp-caption.aligncenter,
@@ -466,26 +626,41 @@ img.size-full {
     }
 
 .wp-caption-text {
-    text-align: center;
+    text-align: left;
     }
 
 .wp-caption .wp-caption-text {
-    margin: 0.8075em 0;
+    color:       #777;
+    font-style:  italic;
+    font-size:   12px;
+    font-size:   0.857142857rem;
+    line-height: 2;
+    margin:      0 0 24px;
+    margin:      0 0 1.71429rem;
     }
 
 .alignleft {
-    float:  left;
-    margin: 0 15px 30px 0;
+    display: inline;
+    float:   left;
+    margin:  12px 24px 12px 0;
+    margin:  0.857142857rem 1.714285714rem 0.857142857rem 0;
     }
 
-.aligncenter {
-    display: block;
-    margin:  0 auto 30px auto;
+.aligncenter,
+.attachment img {
+    clear:         both;
+    display:       block;
+    margin-top:    12px;
+    margin-top:    0.857142857rem;
+    margin-bottom: 12px;
+    margin-bottom: 0.857142857rem;;
     }
 
 .alignright {
-    float:  right;
-    margin: 0 0 30px 15px;
+    display: inline;
+    float:   right;
+    margin:  12px 0 12px 24px;
+    margin:  0.857142857rem 0 0.857142857rem 1.714285714rem;
     }
 
 .alignnone {
@@ -529,6 +704,69 @@ object {
     max-width: 100%;
     }
 
+/* =Widgets
+-------------------------------------------------------------- */
+.module {
+    margin: 20px 0;
+    }
+.widget-area .widget ul ul {
+    margin-left: 12px;
+    margin-left: 0.857142857rem;
+    }
+
+.widget_rss li {
+    margin: 12px 0;
+    margin: 0.857142857rem 0;
+    }
+
+.widget_recent_entries .post-date,
+.widget_rss .rss-date {
+    color:       #aaa;
+    font-size:   11px;
+    font-size:   0.785714286rem;
+    margin-left: 12px;
+    margin-left: 0.857142857rem;
+    }
+
+#wp-calendar {
+    margin:      0;
+    width:       100%;
+    font-size:   13px;
+    font-size:   0.928571429rem;
+    line-height: 1.846153846;
+    color:       #686868;
+    }
+
+#wp-calendar th,
+#wp-calendar td,
+#wp-calendar caption {
+    text-align: left;
+    }
+
+#wp-calendar #next {
+    padding-right: 24px;
+    padding-right: 1.714285714rem;
+    text-align:    right;
+    }
+
+.widget_search label {
+    display:     block;
+    font-size:   13px;
+    font-size:   0.928571429rem;
+    line-height: 1.846153846;
+    }
+
+.widget_twitter li {
+    list-style-type: none;
+    }
+
+.widget_twitter .timesince {
+    display:    block;
+    text-align: right;
+    }
+.widget-title {
+    color: #777;
+    }
 /* Print styles!
 -------------------------------------------------------------------------------*/
 @media print {
