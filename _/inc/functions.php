@@ -37,6 +37,20 @@ class Wpu_Functions extends Wpu {
 	}
 
 	/**
+	 * Filters the_category() to output html 5 valid rel tag
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	function html_validate( $text ) {
+		$good = 'rel="tag"';
+		$bad = 'rel="category tag"';
+		$text = str_replace( $bad, $good, $text );
+
+		return $text;
+	}
+
+	/**
 	 * Outputs the title and category or author description
 	 * @static
 	 * @since 1.2
@@ -124,7 +138,7 @@ class Wpu_Functions extends Wpu {
 	 * @since 1.2
 	 */
 	static function post_meta() {
-		printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a> </span> </span> ', 'wpu' ),
+		printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a> </span> </span> ', 'wpu' ),
 			esc_url( get_permalink() ),
 			esc_attr( get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -147,11 +161,11 @@ class Wpu_Functions extends Wpu {
 			$thumbnail = has_post_thumbnail() ? get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'class' => 'alignleft' ) ) : NULL;
 
 		if ( isset( $thumbnail ) )
-			$content .= '<fig class="excerpt-thumbnail"><a href="'.esc_url( get_permalink() ).'" title="'.the_title_attribute( array( 'before' => __( 'Permalink to ', 'wpu' ), 'echo' => 0 ) ).'" rel="bookmark">'.$thumbnail.'</a></fig>';
+			$content .= '<figure class="excerpt-thumbnail"><a href="'.esc_url( get_permalink() ).'" title="'.the_title_attribute( array( 'before' => __( 'Permalink to ', 'wpu' ), 'echo' => 0 ) ).'" rel="bookmark">'.$thumbnail.'</a></figure>';
 
 		$content .= is_home() || is_archive() || is_search() ? apply_filters( 'the_excerpt', get_the_excerpt() ) : apply_filters( 'the_content', get_the_content() );
 
-		echo $content;
+		printf( '<div class="entry-content hentry %1$s">%2$s</div><!-- .entry-content -->', esc_attr( self::entry_class() ), $content );
 	}
 
 	/**

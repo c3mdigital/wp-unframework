@@ -21,9 +21,9 @@
 
 		<?php } elseif ( is_singular() )  {
 
-						$args = array ( 'before' => '<p><span class="numeric-pagination"> '. __( 'Page: ', 'wpu' ),
-			                'pagelink'=> ' %', 'next_or_number' => 'number', 'after' => '</span></p>',
-							'link_before' => '<span class="current">', 'link_after' => '</span>' );
+				$args = array ( 'before' => '<p><span class="numeric-pagination"> '. __( 'Page: ', 'wpu' ),
+			            'pagelink'=> ' %', 'next_or_number' => 'number', 'after' => '</span></p>',
+						'link_before' => '<span class="current">', 'link_after' => '</span>' );
 
 				wp_link_pages( $args );
 

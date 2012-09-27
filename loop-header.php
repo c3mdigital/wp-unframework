@@ -19,5 +19,3 @@
 			comments_popup_link( ' No replies', ' 1 reply', ' % replies', 'comments-link', ''); ?>
 
 		</header>
-
-	<div class="entry-content hentry <?php echo esc_attr( Wpu_Functions::entry_class() ); ?>">

@@ -8,33 +8,35 @@
 
 get_header(); ?>
 
-<div class="main">
-	<?php if ( have_posts() ) :
+<div class="main" role="main">
+	<?php
+
+		if ( have_posts() ) :
 
 			Wpu_Functions::archive_title();
 
 			get_template_part( 'loop', 'postnav' );
 
-		rewind_posts();
+			rewind_posts();
 
 		while ( have_posts() ) : the_post();
 
 			get_template_part( 'loop', 'header' );
 
-				Wpu_Functions::post_content();
+			Wpu_Functions::post_content();
 
 			get_template_part( 'loop', 'footer' );
 
-		 endwhile;
+		endwhile;
 
-		get_template_part( 'loop', 'postnav' ); ?>
+			get_template_part( 'loop', 'postnav' );
 			
-	<?php else : ?>
+		else :
 
-		<h2>Nothing found</h2>
+			printf( '<h2>%1$s</h2>', __( 'Nothing Found', 'wpu' ) );
 
-	<?php endif; ?>
-</div>
+		endif; ?>
 
+</div><!-- .main -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

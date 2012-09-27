@@ -7,28 +7,32 @@
  *
  */
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html><!--[if IE 7 | IE 8]>
+<html class="ie" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
+<!--<![endif]-->
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<title><?php wp_title( '' ); ?></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta http-equiv="cleartype" content="on">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<title><?php wp_title( '' ); ?></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
 
-	<!-- For iPhone 4 -->
-	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png"> -->
-	<!-- For the new iPad -->
-	<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/h/apple-touch-icon-144x144-precomposed.png"> -->
-	<!-- For iPhone 3G, iPod Touch and Android -->
-	<!-- <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png"> -->
-	<!-- For Desktop Browsers -->
-	<!--<link rel="shortcut icon" href="/favicon.ico"> -->
+<!--[if ie] <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' /><![endif]-->
+<!--[if ie] <meta http-equiv='cleartype' content='on' /><![endif] -->
+<!-- For iPhone 4 -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png"> -->
+<!-- For the new iPad -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/h/apple-touch-icon-144x144-precomposed.png"> -->
+<!-- For iPhone 3G, iPod Touch and Android -->
+<!-- <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png"> -->
+<!-- For Desktop Browsers -->
+<!--<link rel="shortcut icon" href="/favicon.ico"> -->
 
-	<!--[if lt IE 9]>
-	<script src="<?php echo THEME_JS_URI; ?>html5shiv.js" type="text/javascript"></script>
-	<![endif]-->
+<!--[if lt IE 9]>
+<script src="<?php echo THEME_JS_URI; ?>html5shiv.js" type="text/javascript"></script>
+<![endif]-->
 <?php wp_head(); ?>
 </head>
 
@@ -42,9 +46,8 @@
 
 		<nav role="navigation" class="site-navigation main-navigation menu-nav-container">
 			<h1 class="assistive-text"><?php _e( 'Menu', 'wpu' ); ?></h1>
-			<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'wpu' ); ?>"><?php _e( 'Skip to content', 'wpu' ); ?></a></div>
+			<div class="assistive-text skip-link"><a href=".main" title="<?php esc_attr_e( 'Skip to content', 'wpu' ); ?>"><?php _e( 'Skip to content', 'wpu' ); ?></a></div>
 
 			<?php wp_nav_menu( array ( 'theme_location' => 'primary' ) ); ?>
 		</nav>
-
 	</header><!-- #masthead .site-header -->

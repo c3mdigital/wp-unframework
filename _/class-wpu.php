@@ -88,7 +88,7 @@ class Wpu {
 	 */
 	function _set_vars() {
 		self::$post_types = array(
-			'custom' => array(
+			'custom_post' => array(
 				'singular'  => 'Custom',
 				'plural'    => 'Customs',
 				'public'    => true,
@@ -172,8 +172,8 @@ class Wpu {
 		add_action( 'after_setup_theme', array ( $this, 'theme_setup' ) );
 		add_action( 'widgets_init', array( 'Wpu_Sidebars', 'sidebars' ) );
 		add_action( 'widgets_init', 'wpu_register_widgets' );
-	//	add_action( 'init', array( 'Wpu_Taxonomies', 'taxonomies' ) );
-	//	add_action( 'init', array( 'Wpu_Custom_Post_Types', 'post_types' ) );
+		add_action( 'init', array( 'Wpu_Taxonomies', 'taxonomies' ) );
+		add_action( 'init', array( 'Wpu_Custom_Post_Types', 'custom_post_types' ) );
 	}
 
 	/**
@@ -181,9 +181,12 @@ class Wpu {
 	 * @see Wpu_Functions
 	 */
 	function filters() {
+		if ( ! is_admin() ) {
 		add_filter( 'excerpt_length', array ( 'Wpu_Functions', 'excerpt_length' ) );
 		add_filter( 'excerpt_more', array ( 'Wpu_Functions', 'read_more' ) );
 		add_filter( 'get_the_excerpt', array ( 'Wpu_Functions', 'custom_more' ) );
+		add_filter( 'the_category', array( 'Wpu_Functions', 'html_validate' ) );
+		}
 	}
 
 } //End class Wpu

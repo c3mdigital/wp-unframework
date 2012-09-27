@@ -1,4 +1,4 @@
-<footer id="footer" clas="source-org vcard copyright">
+<footer id="footer" class="source-org vcard copyright">
 		
 	<small>
 		<?php printf( __( '&copy; %1$s %2$s ', 'wpu' ),  date( "Y" ), get_bloginfo( 'name' ) ); ?>

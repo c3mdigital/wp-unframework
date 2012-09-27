@@ -23,7 +23,7 @@ class Wpu_Custom_Post_Types extends Wpu {
 	 * Registers custom post types defined in parent class
 	 * @param array Wpu::post_types
 	 */
-	function post_types() {
+	function custom_post_types() {
 
 		foreach ( parent::$post_types as $key => $value ) :
 			$labels = array(
@@ -65,3 +65,5 @@ class Wpu_Custom_Post_Types extends Wpu {
 		endforeach;
 	}
 }
+
+//new Wpu_Custom_Post_Types();

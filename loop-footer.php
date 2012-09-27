@@ -18,16 +18,14 @@
 
 			<?php } else {
 
-				the_tags('<p>Tagged as: ', ', ', '<br /></p>'); ?>
+				the_tags( __( '<p>Tagged as: ', 'wpu' ), ', ', '<br /></p>' );
 
-				<p>Posted in <?php the_category(', '); ?></p>
+				printf( __( '<p>Posted in %1$s </p>', 'wpu' ), get_the_category_list(', ') );
 
-			<?php } ?>
+			    } ?>
 
 		</footer>
 
 		<?php comments_template(); ?>
-	</article>
 
-<?php if ( is_singular() )
-		echo '</div>';
+	</article>

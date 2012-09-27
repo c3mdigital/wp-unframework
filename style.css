@@ -4,7 +4,7 @@ Theme URI: https://github.com/c3mdigital/WP-UnFramework
 Description: Object orientated WordPress Starter theme
 Author: Chris Olbekson
 Author URI: http://c3mdigital.com
-Version: 1.2.1
+Version: 1.2.3
 Tags: light, white, custom-menu, microformats, editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -348,13 +348,13 @@ h1, h2, h3, h4, h5 {
 	padding: 0;
 }
 h2 { font-size: 1.4em; }
-h3 { font-size: 1.3em; }
+h3 { font-size: 1.25em; }
 h4 { font-size: 1.2em; }
 h5 { font-size: 1.1em; }
 
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
-nav ul, nav ol, aside ol, aside ul, .list { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+nav ul, nav ol, aside ol, aside ul, .list { list-style: none; margin: 0; padding: 0; }
 
 
 /* Nav Menus 
@@ -512,6 +512,7 @@ nav[role="navigation"].main-small-navigation a:hover {
 .site-header hgroup {
     margin-bottom: 20px;
     }
+
 /* Structure {Main, Sidebar & Footer started for you
 -------------------------------------------------------------------------------*/
 
@@ -520,6 +521,10 @@ nav[role="navigation"].main-small-navigation a:hover {
     margin: 20px -25% 0 0;
     width:  70%;
     clear: both;
+    }
+.main.full-width {
+    width: 100%;
+    margin: 20px 0;
     }
 
 .secondary.widget-area { /* Sidebar 1 */

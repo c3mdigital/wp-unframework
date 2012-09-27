@@ -53,6 +53,7 @@ function wpu_global_includes() {
 	require_once( THEME_LIB . '/sidebars.php' );
 	require_once( THEME_LIB . '/widgets.php' );
 //	require_once( THEME_LIB . '/taxonomies.php' );
+
 }
 
 /**
@@ -71,4 +72,5 @@ function wpu_admin_includes() {
 function wpu_public_includes() {
 	require_once( THEME_LIB . '/scripts.php' );
 	require_once( THEME_LIB . '/functions.php' );
+
 }

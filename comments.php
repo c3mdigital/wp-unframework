@@ -6,13 +6,13 @@
  * @subpackage comments.php
  */
 
- if ( post_password_required() ) : ?>
+ if ( post_password_required() ) :
 
-		<p class="no password">This post is password protected. Enter the password to view any comments.</p>
+		_e( '<p class="no password">This post is password protected. Enter the password to view any comments.</p>', 'wpu' );
 
-	<?php return; endif; ?>
+		return; endif;
 
-	<?php if ( have_comments() ) : ?>
+		if ( have_comments() ) : ?>
 
 		<h2 id="comments-title">
 			<?php printf( _n( 'One reply on &ldquo;%2$s&rdquo;', '%1$s replies on &ldquo;%2$s&rdquo;', get_comments_number(), 'wpu' ),
